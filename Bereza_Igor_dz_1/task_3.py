@@ -70,7 +70,7 @@ def max_profit_2(comp_dict):
     temp_dict = {value: key for key, value in comp_dict.items()}  # O(n)
     for key in sorted(temp_dict, reverse=True)[0:3]:  # O(n log n)
         max_dict.update({key: temp_dict[key]})  # O(1)
-    max_dict = {value: key for key, value in max_dict.items()}  # O(1)
+    max_dict = {value: key for key, value in max_dict.items()}  # O(n)
     return max_dict  # O(1)
 
 
