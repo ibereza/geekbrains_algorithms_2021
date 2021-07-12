@@ -68,11 +68,29 @@ def max_profit_2(comp_dict):
     comp_dict = comp_dict.copy()  # O(n)
     max_dict = {}  # O(1)
     temp_dict = {value: key for key, value in comp_dict.items()}  # O(n)
-    for key in sorted(temp_dict, reverse=True)[0:3]:  # O(n log n)
+    for key in sorted(temp_dict, reverse=True)[:3]:  # O(n log n)
         max_dict.update({key: temp_dict[key]})  # O(1)
     max_dict = {value: key for key, value in max_dict.items()}  # O(n)
     return max_dict  # O(1)
 
 
+def max_profit_3(comp_dict):
+    """
+    Сложность: O(n) - линейная.
+
+    Третий вариант самый эффективный, так как у него линейная сложность.
+    """
+    comp_dict = comp_dict.copy()  # O(n)
+    max_dict = {}  # O(1)
+    temp_dict = {value: key for key, value in comp_dict.items()}  # O(n)
+    key_lst = [key for key in temp_dict.keys()]  # O(n)
+    for key in range(3):  # O(1)
+        maximum = max(key_lst)  # O(n)
+        max_dict.update({temp_dict[maximum]: maximum})  # O(1)
+        key_lst.remove(maximum)  # O(n)
+    return max_dict  # O(1)
+
+
 print(max_profit_1(companies_dict))
 print(max_profit_2(companies_dict))
+print(max_profit_3(companies_dict))
