@@ -19,3 +19,67 @@
 Прошу вас внимательно читать ТЗ и не забыть выполнить все пункты.
 Задание творческое. Здесь нет жестких требований к выполнению.
 """
+
+users_dict = {
+    'petrov': {
+        'pass': '123',
+        'activation': True
+    },
+    'ivanov': {
+        'pass': '456',
+        'activation': True
+    },
+    'sidorov': {
+        'pass': '789',
+        'activation': False
+    }
+}
+
+
+def authorization_1(user_name, user_pass):
+    """
+    Сложность: O(n) - линейная.
+    """
+    for key in users_dict:  # O(n)
+        if user_name == key:  # O(1)
+            if user_pass != users_dict[user_name]['pass']:  # O(1)
+                return 'Неверный пароль!'  # O(1)
+            elif not users_dict[user_name]['activation']:  # O(1)
+                return 'Необходимо активироваться!'  # O(1)
+            else:  # O(1)
+                return 'Добро пожаловать!'  # O(1)
+    return 'Пользователь не зарегистрирован в системе'  # O(1)
+
+
+def authorization_2(user_name, user_pass):
+    """
+    Сложность: O(1) - константная.
+
+    Второй вариант эффективнее первого, так как у него
+    самая эффективная константная сложность.
+    """
+    if users_dict.get(user_name):  # O(1)
+        if user_pass != users_dict[user_name]['pass']:  # O(1)
+            return 'Неверный пароль!'  # O(1)
+        elif not users_dict[user_name]['activation']:  # O(1)
+            return 'Необходимо активироваться!'  # O(1)
+        else:  # O(1)
+            return 'Добро пожаловать!'  # O(1)
+    return 'Пользователь не зарегистрирован в системе'  # O(1)
+
+
+# Корректный ввод
+print(authorization_1('petrov', '123'))
+print(authorization_2('petrov', '123'))
+
+# Некорректный пароль
+print(authorization_1('ivanov', '123'))
+print(authorization_2('ivanov', '123'))
+
+# Не активирован в системе
+print(authorization_1('sidorov', '789'))
+print(authorization_2('sidorov', '789'))
+
+# Нет в всистеме
+print(authorization_1('egorov', '789'))
+print(authorization_2('egorov', '789'))
