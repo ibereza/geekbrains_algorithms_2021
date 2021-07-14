@@ -18,4 +18,11 @@
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
 
+def revers_number(num):
+    if num == 0:
+        return ''
+    return str(num % 10) + revers_number(num // 10)
 
+
+number = int(input('Введите число, которое требуется перевернуть: '))
+print(f'Перевернутое число: {revers_number(number)}')
