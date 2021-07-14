@@ -50,7 +50,10 @@ def calc():
     elif sign == '*':
         result = number_1 * number_2
     else:
-        result = number_1 / number_2
+        if number_2 == 0:
+            result = 'На ноль делить нельзя!'
+        else:
+            result = number_1 / number_2
     print(f'Ваш результат: {result}')
     calc()
 

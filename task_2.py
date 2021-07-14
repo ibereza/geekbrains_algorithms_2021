@@ -17,14 +17,15 @@
 
 
 def even_odd_counter(num, even=0, odd=0):
-    if num == '':
+    if num == 0:
         return even, odd
-    if int(num[0]) % 2 == 0:
+
+    if (num % 10) % 2 == 0:
         even += 1
     else:
         odd += 1
-    return even_odd_counter(num[1:], even, odd)
+    return even_odd_counter(num // 10, even, odd)
 
 
-number = input('Введите натуральное число: ')
+number = int(input('Введите натуральное число: '))
 print(f'Количество четных и нечетных цифр в числе равно: {even_odd_counter(number)}')
