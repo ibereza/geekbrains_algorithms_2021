@@ -20,15 +20,20 @@
 
 import hashlib
 
+
+def get_hash(pass_str, salt):
+    return hashlib.sha256((pass_str + salt).encode('UTF-8')).hexdigest()
+
+
 password = input('Введите пароль: ')
 salt = 'This is salt'
-pass_hash = hashlib.sha256((password + salt).encode('UTF-8')).hexdigest()
+pass_hash = get_hash(password, salt)
 print(f'Хеш пароля: {pass_hash}')
 file = open('pass_hash.txt', 'w')
 file.write(pass_hash)
 file.close()
 pass_test = input('Введите пароль еще раз для проверки: ')
-pass_test_hash = hashlib.sha256((pass_test + salt).encode('UTF-8')).hexdigest()
+pass_test_hash = get_hash(pass_test, salt)
 file = open('pass_hash.txt', 'r')
 pass_hash_file = file.read()
 file.close()
