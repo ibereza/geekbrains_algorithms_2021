@@ -46,7 +46,7 @@ print(f"func_3: {timeit('func_3(nums_lst)', globals=globals(), number=10000)}") 
 print(f"func_4: {timeit('func_4(nums_lst)', globals=globals(), number=10000)}")  # func_4: 0.7251672
 
 # func_2: вместо простого цикла используется list comprehension.
-# функция выполняется быстрее
+# функция выполняется быстрее.
 # func_3: используется цикл, но в качестве генератора используется enumerate.
 # время выполнения увеличилось, очевидно enumerate требует дополнительного времени.
 # func_4: используется list comprehension с enumerate.
