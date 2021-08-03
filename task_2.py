@@ -3,6 +3,10 @@ from timeit import timeit
 
 
 def merge_sort(arr):
+    """
+    Функция рекурсивно разбивает массив на две части
+    и возвращает функцию объединения массивов
+    """
     if len(arr) <= 1:
         return arr
 
@@ -15,6 +19,10 @@ def merge_sort(arr):
 
 
 def merge(left_arr, right_arr):
+    """
+    Функция объединения двух массивов
+    с сортировкой по возрастанию элементов
+    """
     sorted_arr = []
     left_arr_index = right_arr_index = 0
     left_arr_len, right_arr_len = len(left_arr), len(right_arr)
